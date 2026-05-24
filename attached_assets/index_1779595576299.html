@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyPoint - Enhance Your Study Experience</title>
+    <style>
+        :root {
+            --primary-blue: #16325c;
+            --accent-green: #e1eedd;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --btn-green: #4caf50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: var(--text-light);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-blue);
+        }
+
+        .btn-login {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 10%;
+            min-height: 480px;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-explore {
+            background-color: var(--btn-green);
+            color: var(--text-light);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn-explore:hover {
+            background-color: #439a46;
+        }
+
+        .hero-video-container {
+            flex: 1;
+            max-width: 550px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: #000;
+            aspect-ratio: 16/9;
+        }
+
+        .hero-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Main Grid Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 50px 10%;
+        }
+
+        /* Featured Courses Section */
+        .courses-section h2, .stories-section h2 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            color: var(--primary-blue);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .course-thumb {
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .bg-biology { background-color: #e3efff; color: #1e40af; }
+        .bg-calculus { background-color: #1e293b; color: #f8fafc; }
+        .bg-history { background-color: #fef3c7; color: #92400e; }
+
+        .course-info {
+            padding: 15px;
+        }
+
+        .course-info h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #111;
+        }
+
+        .course-info p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Success Stories Section */
+        .stories-section {
+            background-color: var(--accent-green);
+            padding: 25px;
+            border-radius: 8px;
+            align-self: start;
+        }
+
+        .story-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .story-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .story-text h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--primary-blue);
+        }
+
+        .story-text p {
+            font-size: 12px;
+            color: #444;
+        }
+
+        @media (max-width: 960px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
+            .hero-content { max-width: 100%; }
+            .hero-video-container { width: 100%; max-width: 100%; }
+            .main-content { grid-template-columns: 1fr; padding: 40px 5%; }
+        }
+
+        @media (max-width: 640px) {
+            .course-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">🧭 StudyPoint</div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="content.html">Courses</a>
+            <a href="#">Pricing</a>
+            <a href="#">Resources</a>
+            <a href="#">About Us</a>
+        </nav>
+        <a href="#" class="btn-login">Login/Sign Up</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Enhance Your Study Experience. Anytime, Anywhere.</h1>
+            <p>Bring high-quality learning resources to assist with your study journey, break through tough concepts, and clear your doubts anywhere.</p>
+            <a href="content.html" class="btn-explore">Explore Dashboard Overview &rarr;</a>
+        </div>
+        <div class="hero-video-container">
+            <!-- Autoplayed loop muted video setup -->
+            <video autoplay loop muted playsinline>
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="courses-section">
+            <h2>Featured Courses</h2>
+            <div class="course-grid">
+                <a href="content.html" class="course-card">
+                    <div class="course-thumb bg-biology">🧬 Biology 101</div>
+                    <div class="course-info">
+                        <h3>Biology 101</h3>
+                        <p>Explore cell biology, molecular structures, and metabolic processes.</p>
+                    </div>
+                </a>
+                <a href="content.html" class="course-card">
+                    <div class="course-thumb bg-calculus">∫ f(x) dx</div>
+                    <div class="course-info">
+                        <h3>Calculus</h3>
+                        <p>Master limits, derivatives, integration, and mathematical tools.</p>
+                    </div>
+                </a>
+                <a href="content.html" class="course-card">
+                    <div class="course-thumb bg-history">📖 History</div>
+                    <div class="course-info">
+                        <h3>History</h3>
+                        <p>Analyze civilizations, historical shifts, and structural developments.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <aside class="stories-section">
+            <h2>Success Stories</h2>
+            <div class="story-item">
+                <div class="avatar">👩‍🎓</div>
+                <div class="story-text">
+                    <h4>Jesica Reazier</h4>
+                    <p>Develops structural, high-quality focus patterns using StudyPoint tools.</p>
+                </div>
+            </div>
+            <div class="story-item">
+                <div class="avatar">👨‍🎓</div>
+                <div class="story-text">
+                    <h4>Jimmy Bonsin</h4>
+                    <p>Completely transformed the way I manage all study material before heavy exams.</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+</body>
+</html>

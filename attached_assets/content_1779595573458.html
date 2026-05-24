@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyPoint - Platform Dashboard Content</title>
+    <style>
+        :root {
+            --primary-blue: #16325c;
+            --accent-green: #e1eedd;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --panel-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: #f4f6f8;
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: var(--text-light);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        nav a.active {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 4px;
+        }
+
+        /* Content Page Layout Container */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Interactive Showcase Grid */
+        .dashboard-showcase {
+            background-color: var(--panel-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            background-color: #eaeaea;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content-details {
+            padding: 40px;
+        }
+
+        .content-details h1 {
+            font-size: 32px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: #2b5115;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .description-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 25px;
+        }
+
+        .description-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .features-list {
+            background-color: #f8fafc;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+            align-self: start;
+        }
+
+        .features-list h3 {
+            font-size: 16px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .features-list ul {
+            list-style: none;
+        }
+
+        .features-list li {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .description-grid { grid-template-columns: 1fr; gap: 30px; }
+            .content-details { padding: 25px; }
+            .content-details h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">🧭 StudyPoint</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="content.html" class="active">Courses</a>
+            <a href="#">Pricing</a>
+            <a href="#">Resources</a>
+        </nav>
+        <div style="font-size: 14px; font-weight: 500; color: #666;">Workspace Active View</div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Back to Landing Page</a>
+
+        <article class="dashboard-showcase">
+            <div class="image-wrapper">
+                <!-- Links explicitly to the uploaded platform user interface mockup image -->
+                <img src="Gemini_Generated_Image_m2qu69m2qu69m2qu.png" alt="StudyPoint Web Interface View">
+            </div>
+
+            <div class="content-details">
+                <h1>The StudyPoint Interactive Learning Platform</h1>
+                <span class="tag">Dashboard Interface Architecture</span>
+
+                <div class="description-grid">
+                    <div class="description-text">
+                        <p>Our desktop workspace design delivers a unified student journey. As demonstrated in the environment overview snapshot above, StudyPoint combines visual learning modules, structured course tracking, and localized community feedback channels all on one screen.</p>
+                        <p>With clean card grids separating paths like Biology 101, Calculus, and History modules, students can seamlessly hop between curriculum goals without digital distraction. The integrated community column highlights success tracks from real peer reviewers to keep motivation levels high.</p>
+                        <p>This UI architecture is engineered to optimize focus intervals, matching perfectly with deep library concentration sessions and long hours spent refining critical subject knowledge.</p>
+                    </div>
+
+                    <aside class="features-list">
+                        <h3>Interface Highlights</h3>
+                        <ul>
+                            <li>Clean minimal responsive workspace</li>
+                            <li>Zoned card grids for active subjects</li>
+                            <li>Peer community metrics column</li>
+                            <li>Instant access account login nodes</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </article>
+    </div>
+
+</body>
+</html>

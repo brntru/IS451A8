@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "wouter";
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,15 @@ import { ArrowRight, BookOpen, GraduationCap } from "lucide-react";
 import videoPath from "@assets/video_1779595548808.mp4";
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.muted = true;
+    vid.play().catch(() => {});
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
@@ -31,6 +40,7 @@ export default function Home() {
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-black/20 ring-1 ring-white/10">
               <video 
+                ref={videoRef}
                 src={videoPath} 
                 autoPlay 
                 loop 

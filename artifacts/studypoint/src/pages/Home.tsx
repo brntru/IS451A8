@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link } from "wouter";
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
@@ -9,12 +9,39 @@ import videoPath from "@assets/video_1779595548808.mp4";
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
-    vid.muted = true;
-    vid.play().catch(() => {});
+
+    const tryPlay = () => {
+      vid.muted = true;
+      vid.play().then(() => setIsPlaying(true)).catch(() => {});
+    };
+
+    tryPlay();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) tryPlay(); },
+      { threshold: 0.1 }
+    );
+    observer.observe(vid);
+
+    document.addEventListener("click", tryPlay, { once: true });
+    document.addEventListener("touchstart", tryPlay, { once: true });
+    document.addEventListener("keydown", tryPlay, { once: true });
+    vid.addEventListener("canplay", tryPlay);
+    vid.addEventListener("play", () => setIsPlaying(true));
+    vid.addEventListener("pause", () => setIsPlaying(false));
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("click", tryPlay);
+      document.removeEventListener("touchstart", tryPlay);
+      document.removeEventListener("keydown", tryPlay);
+      vid.removeEventListener("canplay", tryPlay);
+    };
   }, []);
 
   return (
@@ -38,7 +65,16 @@ export default function Home() {
                 </Link>
               </Button>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-black/20 ring-1 ring-white/10">
+            <div
+              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-black/20 ring-1 ring-white/10 cursor-pointer"
+              onClick={() => {
+                const vid = videoRef.current;
+                if (!vid) return;
+                vid.muted = true;
+                if (vid.paused) vid.play().then(() => setIsPlaying(true)).catch(() => {});
+              }}
+              data-testid="video-container"
+            >
               <video 
                 ref={videoRef}
                 src={videoPath} 
@@ -49,6 +85,15 @@ export default function Home() {
                 className="w-full h-full object-cover"
                 data-testid="video-hero"
               />
+              {!isPlaying && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity">
+                  <div className="rounded-full bg-white/20 backdrop-blur-sm p-5 ring-2 ring-white/40">
+                    <svg className="w-10 h-10 text-white fill-white" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>

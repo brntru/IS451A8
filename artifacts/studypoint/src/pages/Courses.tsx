@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
-import heroImagePath from "@assets/Gemini_Generated_Image_3rdivl3rdivl3rdi_1779595561062.png";
+import heroImagePath from "@assets/Gemini_Generated_Image_m2qu69m2qu69m2qu_1779589373812_1779595833532.png";
 
 export default function Courses() {
   return (
